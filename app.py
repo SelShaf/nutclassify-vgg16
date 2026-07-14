@@ -7,10 +7,23 @@ import numpy as np
 from PIL import Image
 import io
 import os
+import gdown  # Tambahkan library untuk unduh otomatis
 
 app = Flask(__name__)
 
-model = tf.keras.models.load_model("model_vgg16_nuts.keras")
+# Jalur tempat menyimpan model di server
+MODEL_PATH = "model_vgg16_nuts.keras"
+
+# JIKA MODEL BELUM ADA DI SERVER, UNDUH OTOMATIS DARI GOOGLE DRIVE
+if not os.path.exists(MODEL_PATH):
+    print("Model tidak ditemukan di server. Mengunduh dari Google Drive...")
+    # Menggunakan ID dari link Google Drive Anda
+    drive_id = '1RryDcgp4F-BtMm84to67KlUHF4-qCX7n'
+    url = f'https://drive.google.com/uc?id={drive_id}'
+    gdown.download(url, MODEL_PATH, quiet=False)
+
+# Setelah dipastikan terunduh, baru load modelnya
+model = tf.keras.models.load_model(MODEL_PATH)
 
 # urutan kelas ini mengikuti class_indices dari flow_from_directory saat training
 class_names = [
