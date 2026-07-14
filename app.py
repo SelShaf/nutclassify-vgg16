@@ -10,7 +10,7 @@ import os
 
 app = Flask(__name__)
 
-model = tf.keras.models.load_model("model_vgg16_nuts.h5")
+model = tf.keras.models.load_model("model_vgg16_nuts.keras")
 
 # urutan kelas ini mengikuti class_indices dari flow_from_directory saat training
 class_names = [
