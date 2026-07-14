@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tentang Dataset yang Digunakan</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">NutClassify</div>
+    <div class="navbar-kanan">
+        <ul>
+            <li><a href="/">Beranda</a></li>
+            <li><a href="/klasifikasi">Klasifikasi</a></li>
+            <li><a href="/tentang-dataset" class="active">Tentang Dataset</a></li>
+            <li><a href="/cara-penggunaan">Cara Penggunaan</a></li>
+        </ul>
+        <button id="toggle-tema" class="toggle-tema" title="Ganti mode gelap/terang">
+            <span class="knob">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+                </svg>
+            </span>
+        </button>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="section-head">
+        <span class="badge-pill">Dataset</span>
+        <h1>Tentang Dataset yang Digunakan</h1>
+        <p class="subjudul">Data yang dipakai untuk melatih model klasifikasi kacang ini</p>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="angka">{{ classes|length }}</div>
+            <div class="label">Jenis Kacang</div>
+        </div>
+        <div class="stat-card">
+            <div class="angka">1163</div>
+            <div class="label">Gambar Training</div>
+        </div>
+        <div class="stat-card">
+            <div class="angka">50</div>
+            <div class="label">Gambar Validasi</div>
+        </div>
+        <div class="stat-card">
+            <div class="angka">224px</div>
+            <div class="label">Ukuran Gambar</div>
+        </div>
+    </div>
+
+    <div class="dua-kolom">
+        <div class="info-card">
+            <h3>Sumber Dataset</h3>
+            <p>Dataset berasal dari Kaggle dengan nama Tree Nuts Image Classification, berisi gambar berbagai jenis kacang pohon yang dikurasi khusus untuk keperluan klasifikasi gambar menggunakan deep learning.</p>
+            <br>
+            <p>Seluruh gambar sudah dalam format JPG berukuran 224x224 piksel dengan tiga channel warna RGB, dan sudah terbagi rapi ke dalam folder train, valid, dan test.</p>
+        </div>
+        <div class="info-card">
+            <h3>Augmentasi Data</h3>
+            <p>Untuk meningkatkan variasi data training dan mencegah overfitting, dilakukan augmentasi data secara otomatis selama proses training berlangsung:</p>
+            <ul>
+                <li>Rotasi gambar hingga 20 derajat</li>
+                <li>Zoom acak hingga 20 persen</li>
+                <li>Flip horizontal acak</li>
+                <li>Normalisasi pixel ke rentang 0 hingga 1</li>
+            </ul>
+        </div>
+    </div>
+
+    <section style="margin-top: 50px;">
+        <div class="section-head">
+            <span class="badge-pill">Galeri</span>
+            <h2>Sepuluh Jenis Kacang</h2>
+        </div>
+        <div class="galeri">
+            <div class="galeri-item">
+                <img src="{{ url_for('static', filename='images/almonds.jpg') }}" alt="almonds">
+                <span>Almonds</span>
+            </div>
+            <div class="galeri-item">
+                <img src="{{ url_for('static', filename='images/brazil nuts.jpg') }}" alt="brazil nuts">
+                <span>Brazil Nuts</span>
+            </div>
+            <div class="galeri-item">
+                <img src="{{ url_for('static', filename='images/cashews.jpg') }}" alt="cashews">
+                <span>Cashews</span>
+            </div>
+            <div class="galeri-item">
+                <img src="{{ url_for('static', filename='images/coconut.jpg') }}" alt="coconut">
+                <span>Coconut</span>
+            </div>
+            <div class="galeri-item">
+                <img src="{{ url_for('static', filename='images/hazelnuts.jpg') }}" alt="hazelnuts">
+                <span>Hazelnuts</span>
+            </div>
+            <div class="galeri-item">
+                <img src="{{ url_for('static', filename='images/macadamia.jpg') }}" alt="macadamia">
+                <span>Macadamia</span>
+            </div>
+            <div class="galeri-item">
+                <img src="{{ url_for('static', filename='images/pecans.jpg') }}" alt="pecans">
+                <span>Pecans</span>
+            </div>
+            <div class="galeri-item">
+                <img src="{{ url_for('static', filename='images/pine nuts.jpg') }}" alt="pine nuts">
+                <span>Pine Nuts</span>
+            </div>
+            <div class="galeri-item">
+                <img src="{{ url_for('static', filename='images/pistachios.jpg') }}" alt="pistachios">
+                <span>Pistachios</span>
+            </div>
+            <div class="galeri-item">
+                <img src="{{ url_for('static', filename='images/walnuts.jpg') }}" alt="walnuts">
+                <span>Walnuts</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="keterbatasan">
+        <h2>Keterbatasan Dataset</h2>
+        <p>Jumlah data pada dataset ini tergolong terbatas, kurang dari 1500 gambar untuk seluruh kelas. Karena itu, model tidak dilatih dari nol, melainkan menggunakan teknik transfer learning dengan VGG16 yang sudah dilatih sebelumnya pada jutaan gambar di ImageNet, lalu disempurnakan dengan fine-tuning agar lebih akurat mengenali fitur khas tiap jenis kacang.</p>
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+</body>
+</html>

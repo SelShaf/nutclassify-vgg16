@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unggah Gambar untuk Diklasifikasi</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">NutClassify</div>
+    <div class="navbar-kanan">
+        <ul>
+            <li><a href="/">Beranda</a></li>
+            <li><a href="/klasifikasi" class="active">Klasifikasi</a></li>
+            <li><a href="/tentang-dataset">Tentang Dataset</a></li>
+            <li><a href="/cara-penggunaan">Cara Penggunaan</a></li>
+        </ul>
+        <button id="toggle-tema" class="toggle-tema" title="Ganti mode gelap/terang">
+            <span class="knob">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+                </svg>
+            </span>
+        </button>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="section-head">
+    <span class="badge-pill">Klasifikasi</span>
+    <h1>Unggah Gambar untuk Diklasifikasi</h1>
+    <p class="subjudul">Seret gambar kacang ke area di bawah, atau klik untuk memilih file dari perangkatmu</p>
+    </div>
+
+    <div id="upload-area" class="upload-area">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="17 8 12 3 7 8"></polyline>
+            <line x1="12" y1="3" x2="12" y2="15"></line>
+        </svg>
+        <p>Klik di sini atau seret gambar untuk diunggah</p>
+    </div>
+    <input type="file" id="file-input" accept="image/*" style="display: none;">
+
+    <p id="pesan-validasi" class="pesan-validasi"></p>
+
+    <div id="preview-container">
+        <img id="preview-img" src="" alt="Preview gambar">
+    </div>
+
+    <div class="aksi-analisis">
+        <button id="btn-analisis" class="btn">Analisis Gambar</button>
+    </div>
+
+    <div id="status-loading" class="status-loading">
+        <p>Sedang menganalisis gambar...</p>
+        <div class="progress-track">
+            <div class="progress-bar-loading"></div>
+        </div>
+    </div>
+
+    <div id="hasil-card" class="hasil-card">
+        <div class="hasil-eyebrow">Hasil Klasifikasi</div>
+        <div class="hasil-flex">
+            <div class="hasil-gambar">
+                <img id="hasil-gambar-img" src="" alt="Gambar yang dianalisis">
+            </div>
+            <div class="hasil-detail">
+                <div id="hasil-label" class="hasil-label"></div>
+                <span id="badge-status" class="badge-status"></span>
+                <div id="hasil-confidence-text" class="hasil-confidence-text"></div>
+                <div class="confidence-bar-track">
+                    <div id="confidence-bar-fill" class="confidence-bar-fill"></div>
+                </div>
+                <div class="opsi-lain">
+                    <h3>Kemungkinan Lain</h3>
+                    <div id="opsi-lain-list"></div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+</body>
+</html>

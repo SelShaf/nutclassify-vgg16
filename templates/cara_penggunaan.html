@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cara Menggunakan Website Ini</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">NutClassify</div>
+    <div class="navbar-kanan">
+        <ul>
+            <li><a href="/">Beranda</a></li>
+            <li><a href="/klasifikasi">Klasifikasi</a></li>
+            <li><a href="/tentang-dataset">Tentang Dataset</a></li>
+            <li><a href="/cara-penggunaan" class="active">Cara Penggunaan</a></li>
+        </ul>
+        <button id="toggle-tema" class="toggle-tema" title="Ganti mode gelap/terang">
+            <span class="knob">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+                </svg>
+            </span>
+        </button>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="section-head">
+        <span class="badge-pill">Panduan</span>
+        <h1>Cara Menggunakan Website Ini</h1>
+        <p class="subjudul">Lima langkah mudah untuk mengklasifikasi jenis kacang dari foto</p>
+    </div>
+
+    <div class="langkah-grid">
+        <div class="langkah-card">
+            <div class="langkah-nomor">1</div>
+            <h3>Buka Halaman Klasifikasi</h3>
+            <p>Klik menu "Klasifikasi" lewat navigasi di atas untuk mulai mengunggah gambar.</p>
+        </div>
+        <div class="langkah-card">
+            <div class="langkah-nomor">2</div>
+            <h3>Unggah Gambar</h3>
+            <p>Klik area upload atau seret file gambar kacang yang ingin diperiksa.</p>
+        </div>
+        <div class="langkah-card">
+            <div class="langkah-nomor">3</div>
+            <h3>Pastikan Gambar Jelas</h3>
+            <p>Gambar sebaiknya fokus pada kacangnya saja, bukan foto dengan banyak objek lain.</p>
+        </div>
+        <div class="langkah-card">
+            <div class="langkah-nomor">4</div>
+            <h3>Klik Analisis Gambar</h3>
+            <p>Tunggu beberapa detik sementara model memproses gambar yang diunggah.</p>
+        </div>
+        <div class="langkah-card">
+            <div class="langkah-nomor">5</div>
+            <h3>Lihat Hasilnya</h3>
+            <p>Hasil klasifikasi beserta tingkat keyakinan model akan ditampilkan dalam bentuk kartu.</p>
+        </div>
+    </div>
+
+    <div class="tips-box">
+        <h3 id="penjelasan-istilah">Penjelasan Istilah</h3>
+        <div class="tips-kolom">
+            <div class="istilah-item">
+                <strong>Tingkat keyakinan (confidence score)</strong>
+                <p>Angka yang menunjukkan seberapa yakin sistem terhadap prediksinya. Semakin tinggi persentasenya, semakin yakin sistem bahwa gambar tersebut adalah jenis kacang yang disebutkan.</p>
+            </div>
+            <div class="istilah-item">
+                <strong>Kemungkinan lain</strong>
+                <p>Jenis kacang lain yang juga dipertimbangkan sistem, biasanya muncul kalau bentuk atau warna kacang mirip satu sama lain.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+</body>
+</html>
